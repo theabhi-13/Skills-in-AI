@@ -15,7 +15,8 @@
         "The script sets up a static side-view camera",
         "The script includes lighting setup",
         "The script includes render output settings",
-        "The output includes instructions for how to run the script"
+        "The output includes instructions for how to run the script",
+        "A rendered .mp4 file exists in the output directory"
       ]
     },
     {
@@ -32,7 +33,8 @@
         "The script includes stars (via particles, HDRI, or scattered small emissive spheres)",
         "The script animates Earth rotation with keyframes on rotation_euler",
         "The script includes camera setup appropriate for the scene",
-        "The output includes run instructions"
+        "The output includes run instructions",
+        "A rendered .mp4 file exists in the output directory"
       ]
     },
     {
@@ -49,7 +51,8 @@
         "The script animates the rocket moving upward with keyframes",
         "The script includes a camera that tracks or follows the rocket",
         "The script includes cinematic-style lighting",
-        "The output includes run instructions"
+        "The output includes run instructions",
+        "A rendered .mp4 file exists in the output directory"
       ]
     }
   ]

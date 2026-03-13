@@ -1,6 +1,6 @@
 ---
 name: 3D-Animation
-description: Expert guide for creating 3D animations using Blender and Python scripting. Covers tool installation (Blender via Homebrew/direct download), scene setup, object creation, motion/keyframing, camera control, rendering, and converting natural language animation ideas into structured, executable animation blueprints. Use this skill whenever the user mentions 3D animation, Blender scripting, animation planning, keyframe animation, rendering scenes, or wants to create any kind of 3D animated content — even if they don't explicitly say "3D" or "Blender".
+description: Expert guide for creating 3D animations using Blender and Python scripting. Covers tool installation, scene setup, animation, and **rendering final video output (MP4)**. Use this skill whenever the user wants a 3D animation video. The goal is to deliver a rendered video file, not just a script.
 ---
 
 # 3D Animation with Blender & Python
@@ -344,9 +344,14 @@ fill.data.energy = 50
 scene.render.image_settings.file_format = 'FFMPEG'
 scene.render.ffmpeg.format = 'MPEG4'
 scene.render.ffmpeg.codec = 'H264'
-scene.render.filepath = "/tmp/animation_output"
+scene.render.filepath = "./animation_output"
 
 # To render: bpy.ops.render.render(animation=True)
+
+import sys
+if "--render" in sys.argv:
+    bpy.ops.render.render(animation=True)
+    print(f"Animation rendered to: {scene.render.filepath}.mp4")
 ```
 
 ### Running the Script
@@ -357,15 +362,6 @@ blender --background --python your_animation_script.py
 
 # Run and render the animation
 blender --background --python your_animation_script.py -- --render
-```
-
-For rendering within the script, add at the end:
-
-```python
-import sys
-if "--render" in sys.argv:
-    bpy.ops.render.render(animation=True)
-    print(f"Animation rendered to: {scene.render.filepath}")
 ```
 
 ---
@@ -506,13 +502,35 @@ Users may give prompts like these. Here's how to interpret them:
 ## Part 9 — Workflow Summary
 
 When a user asks for a 3D animation, follow these steps in order:
-
 1. **Parse the request** — Extract scene, objects, motions, timeline, camera, and style
 2. **Fill gaps** — Apply sensible defaults for anything unspecified (see Part 7)
 3. **Present the animation plan** — Show the structured JSON plan for user confirmation
 4. **Generate the Blender Python script** — Produce a complete, runnable `.py` file
-5. **Provide run instructions** — Show exactly how to execute and render the animation
+5. **Render and Deliver Video** — Execute the script with the `--render` flag and provide the resulting `.mp4` file to the user (see Part 11)
 6. **Iterate** — Adjust based on user feedback
+
+---
+
+## Part 11 — Rendering and Delivering Video
+
+After generating the Python script, you MUST render it and deliver the video to the user.
+
+1.  **Save the script**: Write the generated Python code to a file (e.g., `animation.py`).
+2.  **Run Render**: Execute the following command in the background:
+    ```bash
+    blender --background --python animation.py -- --render
+    ```
+4. **FFmpeg Fallback (If native video render fails)**:
+   If the Blender render fails because of missing video formats (e.g., "FFMPEG enum not found"), update the script to render a PNG sequence and use FFmpeg CLI:
+   - **Script Update**: `scene.render.image_settings.file_format = 'PNG'` and `scene.render.filepath = "./frames/frame_"`
+   - **Command**:
+     ```bash
+     blender --background --python animation.py && ffmpeg -y -framerate 24 -i frames/frame_%04d.png -c:v libx264 -pix_fmt yuv420p animation.mp4
+     ```
+3.  **Verify and Deliver**:
+    - Once the command completes, locate the `.mp4` file.
+    - Use `present_files` or provide the absolute path to the rendered video so the user can see it.
+    - Mention that the video has been rendered and is ready for viewing.
 
 ---
 
