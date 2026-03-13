@@ -1,0 +1,16 @@
+{
+  "eval_id": 3,
+  "eval_name": "rocket-launch",
+  "prompt": "I want a rocket launch animation with smoke and fire, cinematic camera that follows the rocket up",
+  "assertions": [
+    "The output includes a structured JSON animation plan",
+    "The output includes a Blender Python script",
+    "The script creates a rocket-like object (cone + cylinder or similar composite)",
+    "The script includes a ground plane",
+    "The script uses particle systems or volumetrics for smoke/fire effects",
+    "The script animates the rocket moving upward with keyframes",
+    "The script includes a camera that tracks or follows the rocket",
+    "The script includes cinematic-style lighting",
+    "The output includes run instructions"
+  ]
+}

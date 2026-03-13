@@ -1,0 +1,14 @@
+{
+  "expectations": [
+    { "text": "The output includes a valid JSON animation plan with scene, objects, motions, timeline, camera, and style fields", "passed": true, "evidence": "output.md contains a complete JSON plan with all required top-level fields: scene, objects, motions, timeline, camera, style, render_settings" },
+    { "text": "The output includes a complete Blender Python script using the bpy module", "passed": true, "evidence": "bouncing_ball.py is a 124-line script importing bpy with full scene setup" },
+    { "text": "The script creates a UV sphere with a red material", "passed": true, "evidence": "Line: primitive_uv_sphere_add(radius=0.5), and create_material('RedRubber', (0.8, 0.13, 0.13))" },
+    { "text": "The script includes keyframe animation for bouncing (location changes on Z-axis)", "passed": true, "evidence": "bounce_data dict with 8 keyframes showing Z-axis location changes from 5.0 down to 0.5 and back" },
+    { "text": "The script includes squash-and-stretch via scale keyframes", "passed": true, "evidence": "bounce_data includes scale values like (1.3, 1.3, 0.6) for squash and (0.85, 0.85, 1.2) for stretch" },
+    { "text": "The script sets up a static side-view camera", "passed": true, "evidence": "camera_add(location=(10, 0, 3)) with rotation_euler pointing at the ball — X=10 gives a clear side view" },
+    { "text": "The script includes lighting setup", "passed": true, "evidence": "Three-point lighting: SUN key light, AREA fill light, POINT rim light" },
+    { "text": "The script includes render output settings", "passed": true, "evidence": "FFMPEG/MPEG4/H264 output to /tmp/bouncing_ball_output" },
+    { "text": "The output includes instructions for how to run the script", "passed": true, "evidence": "output.md has a 'How to Run' section with blender --background --python commands and --render flag" }
+  ],
+  "summary": { "passed": 9, "failed": 0, "total": 9, "pass_rate": 1.0 }
+}

@@ -1,0 +1,14 @@
+{
+  "expectations": [
+    { "text": "The output includes a structured JSON animation plan", "passed": true, "evidence": "output.md contains a full JSON plan with scene, objects, motions, timeline, camera, style, render_settings" },
+    { "text": "The output includes a Blender Python script", "passed": true, "evidence": "rocket_launch.py is a 176-line comprehensive script" },
+    { "text": "The script creates a rocket-like object (cone + cylinder or similar composite)", "passed": true, "evidence": "Creates cone nose, cylinder body, inverted cone nozzle, and 4 cube fins — all parented to an Empty" },
+    { "text": "The script includes a ground plane", "passed": true, "evidence": "primitive_plane_add(size=60) named 'Ground' with LaunchPad material" },
+    { "text": "The script uses particle systems or volumetrics for smoke/fire effects", "passed": true, "evidence": "PARTICLE_SYSTEM modifier 'SmokeParticles' with 2000 particles, Newton physics, emitting from face" },
+    { "text": "The script animates the rocket moving upward with keyframes", "passed": true, "evidence": "7 keyframes from Z=0 to Z=120 with Bezier interpolation for acceleration effect" },
+    { "text": "The script includes a camera that tracks or follows the rocket", "passed": true, "evidence": "Camera with TRACK_TO constraint targeting rocket_parent, TRACK_NEGATIVE_Z axis" },
+    { "text": "The script includes cinematic-style lighting", "passed": true, "evidence": "Warm SUN key light, cool blue AREA rim light, orange POINT engine glow parented to rocket" },
+    { "text": "The output includes run instructions", "passed": true, "evidence": "output.md has 'How to Run' section with install + render commands" }
+  ],
+  "summary": { "passed": 9, "failed": 0, "total": 9, "pass_rate": 1.0 }
+}

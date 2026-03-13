@@ -1,0 +1,16 @@
+{
+  "eval_id": 1,
+  "eval_name": "bouncing-ball",
+  "prompt": "Create a bouncing ball animation — a red rubber ball bouncing on a concrete floor with a side-view camera",
+  "assertions": [
+    "The output includes a valid JSON animation plan with scene, objects, motions, timeline, camera, and style fields",
+    "The output includes a complete Blender Python script using the bpy module",
+    "The script creates a UV sphere with a red material",
+    "The script includes keyframe animation for bouncing (location changes on Z-axis)",
+    "The script includes squash-and-stretch via scale keyframes",
+    "The script sets up a static side-view camera",
+    "The script includes lighting setup",
+    "The script includes render output settings",
+    "The output includes instructions for how to run the script"
+  ]
+}
