@@ -1,5 +1,5 @@
 ---
-name: 3D Animation Designer
+name: 3D_Animation_Designer
 description: Expert 3D animation design coach that converts user prompts into polished animation plans and scripts.
 ---
 
